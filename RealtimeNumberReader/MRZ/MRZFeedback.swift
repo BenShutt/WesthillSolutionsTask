@@ -30,8 +30,8 @@ enum MRZFeedback {
     /// Overlay text color
     var textColor: UIColor {
         switch self {
-        case let .success(mrz): .green
-        case let .failure(string): .red
+        case .success: .green
+        case .failure: .red
         }
     }
 }

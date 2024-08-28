@@ -36,7 +36,7 @@ class ViewController: UIViewController {
 	var textOrientation = CGImagePropertyOrientation.up
 	
 	// MARK: - Coordinate transforms
-	var bufferAspectRatio: Double!
+
 	// Transform from UI orientation to buffer orientation.
 	var uiRotationTransform = CGAffineTransform.identity
 	// Transform bottom-left coordinates to top-left.
@@ -102,21 +102,8 @@ class ViewController: UIViewController {
 	// MARK: - Setup
 	
 	func calculateRegionOfInterest() {
-		// In landscape orientation, the desired ROI is specified as the ratio of
-		// buffer width to height. When the UI is rotated to portrait, keep the
-		// vertical size the same (in buffer pixels). Also try to keep the
-		// horizontal size the same up to a maximum ratio.
-		let desiredHeightRatio = 0.15
-		let desiredWidthRatio = 0.6
-		let maxPortraitWidth = 0.8
-		
-		// Figure out the size of the ROI.
-		let size: CGSize
-		if currentOrientation.isPortrait || currentOrientation == .unknown {
-			size = CGSize(width: min(desiredWidthRatio * bufferAspectRatio, maxPortraitWidth), height: desiredHeightRatio / bufferAspectRatio)
-		} else {
-			size = CGSize(width: desiredWidthRatio, height: desiredHeightRatio)
-		}
+		let size = PassportRegion(orientation: currentOrientation).size
+
 		// Center the ROI.
 		regionOfInterest.origin = CGPoint(x: (1 - size.width) / 2, y: (1 - size.height) / 2)
 		regionOfInterest.size = size
@@ -170,7 +157,7 @@ class ViewController: UIViewController {
 			textOrientation = .right
 			uiRotationTransform = CGAffineTransform(translationX: 0, y: 1).rotated(by: -CGFloat.pi / 2)
 		}
-		
+
 		// The full Vision ROI to AVFoundation transform.
 		visionToAVFTransform = roiToGlobalTransform.concatenating(bottomToTopTransform).concatenating(uiRotationTransform)
 	}
@@ -187,10 +174,8 @@ class ViewController: UIViewController {
 		// battery usage.
 		if captureDevice.supportsSessionPreset(.hd4K3840x2160) {
 			captureSession.sessionPreset = .hd4K3840x2160
-			bufferAspectRatio = 3840.0 / 2160.0
 		} else {
 			captureSession.sessionPreset = .hd1920x1080
-			bufferAspectRatio = 1920.0 / 1080.0
 		}
 		
 		guard let deviceInput = try? AVCaptureDeviceInput(device: captureDevice) else {

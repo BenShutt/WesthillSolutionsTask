@@ -17,6 +17,7 @@
 		46E86924226A9FC300C025A2 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E86923226A9FC300C025A2 /* StringUtils.swift */; };
 		B856D1532C7F709E00FC57DC /* MRZParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856D1522C7F709E00FC57DC /* MRZParser.swift */; };
 		B856D1552C7F7CED00FC57DC /* MRZFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856D1542C7F7CED00FC57DC /* MRZFeedback.swift */; };
+		B856D1582C7F7F3A00FC57DC /* PassportRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856D1572C7F7F3A00FC57DC /* PassportRegion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		B856D1512C7F6F2800FC57DC /* WSL-README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "WSL-README.md"; sourceTree = "<group>"; };
 		B856D1522C7F709E00FC57DC /* MRZParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRZParser.swift; sourceTree = "<group>"; };
 		B856D1542C7F7CED00FC57DC /* MRZFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRZFeedback.swift; sourceTree = "<group>"; };
+		B856D1572C7F7F3A00FC57DC /* PassportRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportRegion.swift; sourceTree = "<group>"; };
 		D4B262FCDCAFA149C877DBF8 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		E0C0E240E0E1569000000001 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 			children = (
 				B856D1522C7F709E00FC57DC /* MRZParser.swift */,
 				B856D1542C7F7CED00FC57DC /* MRZFeedback.swift */,
+				B856D1572C7F7F3A00FC57DC /* PassportRegion.swift */,
 			);
 			path = MRZ;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				460A3F502280B7A900FDBE21 /* VisionViewController.swift in Sources */,
 				B856D1532C7F709E00FC57DC /* MRZParser.swift in Sources */,
 				46D1B27F226A6AAB00C6D4A7 /* PreviewView.swift in Sources */,
+				B856D1582C7F7F3A00FC57DC /* PassportRegion.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +343,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5353635B2M;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				INFOPLIST_FILE = RealtimeNumberReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -362,7 +366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5353635B2M;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				INFOPLIST_FILE = RealtimeNumberReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
