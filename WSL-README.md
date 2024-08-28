@@ -47,8 +47,10 @@ This task was time-boxed to 4 hours maximum. In this time I:
 - Wrote this `README` and other codebase documentation
 
 I am finishing now by answering your final questions on the task criteria.
+
 Due to the time limit, I can not complete any more features in the time.
 If other candidates have done more in the 4h I would be interested to know if they actually stuck to the 4h.
+I took a little longer due to the amount I have written here.
 
 ## Answers To Your Questions
 
@@ -120,7 +122,7 @@ If the user has access to their passport, using reliable facial recognition coul
 
 Regarding NFC, I am hesitant to say "confident". 
 We should be mindful that a criminal:
-- Is able to scan passports in close proximity so is no guarantee
+- Is able to scan passports in close proximity
 - May have stolen or found a passport
 
 To be honest though, I would want more time to think about the answer to this question and I am limited to 4 hours.
