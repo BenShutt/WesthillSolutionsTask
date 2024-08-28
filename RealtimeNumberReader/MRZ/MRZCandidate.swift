@@ -1,5 +1,5 @@
 //
-//  TextGroups.swift
+//  MRZCandidate.swift
 //  RealtimeNumberReader
 //
 //  Created by Ben Shutt on 28/08/2024.
@@ -10,7 +10,7 @@ import Foundation
 import Vision
 
 /// Group the results of recognised text into lines of the same count that may be a valid MRZ
-struct TextGroups {
+struct MRZCandidate {
 
     /// Map the results into lines of text.
     /// Group these lines when they match the line count of the line above and have
