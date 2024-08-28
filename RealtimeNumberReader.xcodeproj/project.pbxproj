@@ -40,6 +40,7 @@
 		B856D1592C7F936700FC57DC /* MRZCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRZCandidate.swift; sourceTree = "<group>"; };
 		B856D15B2C7FCFF700FC57DC /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		B856D15E2C7FD18600FC57DC /* UIColor+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
+		B856D1602C7FD88300FC57DC /* WSL_Technical_Task.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = WSL_Technical_Task.pdf; sourceTree = "<group>"; };
 		D4B262FCDCAFA149C877DBF8 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		E0C0E240E0E1569000000001 /* Apple-README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Apple-README.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +61,7 @@
 			children = (
 				E0C0E240E0E1569000000001 /* Apple-README.md */,
 				B856D1512C7F6F2800FC57DC /* README.md */,
+				B856D1602C7FD88300FC57DC /* WSL_Technical_Task.pdf */,
 				46D1B26B226A6A9600C6D4A7 /* RealtimeNumberReader */,
 				46D1B26A226A6A9600C6D4A7 /* Products */,
 				FF610FDC61304D7540023623 /* Configuration */,
