@@ -29,7 +29,8 @@ typealias MRZ = String
 /// }
 /// ```
 ///
-/// The logic for the parsing would also be stricter, potentially using regex(s).
+/// The logic for the parsing would also be stricter; e.g. potentially using regex(s) to ensure
+/// the MRZ is composed of valid characters.
 /// It goes without saying, this is a huge candidate for a lot of ruthless unit tests!
 struct MRZParser {
 
