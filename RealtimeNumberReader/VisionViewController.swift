@@ -26,11 +26,14 @@ class VisionViewController: ViewController {
 	
 	// The Vision recognition handler.
 	func recognizeTextHandler(request: VNRequest, error: Error?) {
-		guard let results = request.results as? [VNRecognizedTextObservation] else {
-			return
-		}
-
-        // TODO: Implement...
+		guard let results = request.results as? [VNRecognizedTextObservation] else { return }
+        let groups = TextGroups.groupLines(results: results)
+        groups.forEach { group in
+            let string = group.joined(separator: "\n")
+            if let validMRZ = try? MRZParser.parse(string) {
+                showString(string: validMRZ)
+            }
+        }
 	}
 	
 	override func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {

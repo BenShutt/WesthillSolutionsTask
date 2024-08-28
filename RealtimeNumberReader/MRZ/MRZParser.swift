@@ -38,11 +38,11 @@ struct MRZParser {
     private static let filler: Character = "<"
 
     /// Range of possible line counts for a valid MRZ.
-    private static let lineCounts = 2...3
+    static let lineCounts = 2...3
 
     /// Set of valid character counts per line. All lines will have the same length
     /// matching one of these values.
-    private static let lineLengths: Set<Int> = [30, 36, 44]
+    static let lineCharacterCounts: Set<Int> = [30, 36, 44]
 
     /// Parse the given string using the following criteria:
     /// - Strip spaces
@@ -64,7 +64,7 @@ struct MRZParser {
         // Get the number of characters in the first line and 
         // ensure it is a valid value
         let firstLineCount = lines[0].count // We have ≥1 elements
-        guard lineLengths.contains(firstLineCount) else {
+        guard lineCharacterCounts.contains(firstLineCount) else {
             throw MRZParserError.lineCharacterCount(firstLineCount)
         }
 
