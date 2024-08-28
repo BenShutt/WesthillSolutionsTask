@@ -38,7 +38,7 @@ struct MRZParser {
     private static let filler: Character = "<"
 
     /// Range of possible line counts for a valid MRZ.
-    private static let lineCounts = 1...3
+    private static let lineCounts = 2...3
 
     /// Set of valid character counts per line. All lines will have the same length
     /// matching one of these values.
