@@ -12,17 +12,17 @@ import UIKit
 ///
 /// # Note
 /// Not currently used as, at this stage, it is undoubtedly over-engineering.
-/// In the future, it would become the observable model that publishes the state as feedback to the user.
+/// In the future, it will become the observable model that publishes the state as feedback to the user.
 /// Also, at this stage, the structure could be replaced by a `Result`.
 enum MRZFeedback {
 
     /// The scan was successful and returned the given text
     case success(MRZ)
 
-    /// The scan was unsuccessful
+    /// The scan was unsuccessful with the given error message
     case failure(String)
 
-    /// Overlay title text
+    /// State title text, localized
     var title: String {
         switch self {
         case let .success(mrz): mrz

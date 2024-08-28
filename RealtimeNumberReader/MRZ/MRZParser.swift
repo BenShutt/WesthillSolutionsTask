@@ -15,8 +15,8 @@ typealias MRZ = String
 /// The structure should be responsible for no more than: given this string, is it a valid MRZ.
 ///
 /// # Notes
-/// Given the time in a production app, my more stringent approach
-/// would probably look like a structure with:
+/// Given the time in a production app, a more stringent approach would probably look
+/// like a structure such as:
 ///
 /// ```swift
 /// struct MRZ {
@@ -33,7 +33,7 @@ typealias MRZ = String
 /// The logic for the parsing would also be stricter; e.g. potentially using regex(s) to ensure
 /// the MRZ is composed of valid characters.
 ///
-/// It goes without saying, this is a huge candidate for a lot of ruthless unit tests!
+/// It goes without saying, this is also a huge candidate for a lot of ruthless unit tests!
 struct MRZParser {
 
     /// An MRZ filler character.
@@ -50,11 +50,8 @@ struct MRZParser {
     /// - Strip spaces
     /// - A `<` in (the first line) of length 44, 36, or 30 characters
     /// - 2 (passport) or 3 remaining lines of the same length (44 for a passport).
-    ///
-    /// Though I think the word "remaining" above may be misleading, an MRZ
-    /// can have 1 to 3 lines (inclusive).
     static func parse(_ string: String) throws -> MRZ {
-        // Trim leading and trailing whitespace and new-lines
+        // Trim leading and trailing whitespaces and new-lines
         let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
 
         // Split by the new-line component (for iOS systems)
@@ -77,7 +74,8 @@ struct MRZParser {
             }
         }
 
-        // Check the first line contains a filler
+        // Check the first line contains a filler.
+        // This check could be optimized.
         guard Set(lines[0]).contains(filler) else {
             throw MRZParserError.filler
         }
@@ -89,7 +87,7 @@ struct MRZParser {
 
 // MARK: - MRZParserError
 
-/// An `Error` thrown by an `MRZParser` instance
+/// An `Error` thrown by the `MRZParser`
 enum MRZParserError: Error {
 
     /// The given number of lines is not valid for an MRZ

@@ -9,13 +9,18 @@
 import Foundation
 import Vision
 
-/// Group the results of recognised text into lines of the same count that may be a valid MRZ
+/// Group the results of recognised text into lines of the same count that may, when joined, be a valid MRZ
 struct MRZCandidate {
 
     /// Map the results into groups (of lines of text).
+    ///
     /// The lines are grouped when they match the line count of the line above and have
     /// a character count of a valid MRZ.
     /// A group could be a single line if it has a valid character count and the line below (if exists) does not.
+    ///
+    /// - Warning: Line order is assumed to be correct, given more time this would be fixed.
+    /// A more robust parser might cater for this case anyway.
+    ///
     /// - Parameter results: Camera observed text results
     /// - Returns: Groups of lines which may be a valid MRZ
     static func groupLines(results: [VNRecognizedTextObservation]) -> [[String]] {
