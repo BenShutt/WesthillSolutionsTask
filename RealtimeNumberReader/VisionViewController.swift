@@ -35,13 +35,13 @@ class VisionViewController: ViewController {
 	// The Vision recognition handler.
 	func recognizeTextHandler(request: VNRequest, error: Error?) {
 		guard let results = request.results as? [VNRecognizedTextObservation] else { return }
-        let candidates = MRZCandidate.groupLines(results: results)
-        candidates.forEach { candidate in
-            let string = candidate.joined(separator: "\n")
-            if let validMRZ = try? MRZParser.parse(string) {
-                showString(string: validMRZ)
-            }
-        }
+		let candidates = MRZCandidate.groupLines(results: results)
+		candidates.forEach { candidate in
+			let string = candidate.joined(separator: "\n")
+			if let validMRZ = try? MRZParser.parse(string) {
+				showString(string: validMRZ)
+			}
+		}
 	}
 	
 	override func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
