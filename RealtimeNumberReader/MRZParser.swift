@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// The string represents a valid MRZ code.
+/// The string represents a valid MRZ.
 typealias MRZ = String
 
 /// Determine if a given string is a valid MRZ according to the _task criteria requirements_.
@@ -79,7 +79,7 @@ struct MRZParser {
             throw MRZParserError.filler
         }
 
-        // Return the trimmed MRZ code
+        // Return the trimmed MRZ
         return trimmed
     }
 }
