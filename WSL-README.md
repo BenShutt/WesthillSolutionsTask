@@ -22,9 +22,14 @@ The requirements are quite clear about editing the WWDC19 sample code, so I have
 
 ## Challenges
 
-- The recognized text observations are resulted are returned as single lines whereas an MRZ may is multiple. My solution was to implement likely groupings based on character count and send them through the parser
+- Undoubtedly the main one is the (camera read) text resulted are returned as single lines whereas an MRZ may is multiple. My solution was to implement likely groupings based on character count and send them through the parser (in a efficient-ish way such as assuming correct order). I _strongly_ suspect there is a better way and would, given more time, investigate that
+- The `recognitionLevel` needed to be `.accurate`
+
+### Less Important
+
 - Understanding `bufferAspectRatio` and how we need to cater for it
 - Transformations based on device orientation. This project (because of its use case) is a little over-engineered for our MRZ use case. I think when using the camera to scan a passport, it is not unreasonable to inform the user to simply rotate their device so it is landscape which results in a better mask
+- Ugly UI that ought to be much better, given more time would definitely sort this
 
 ## Feedback
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Note: A structure is perhaps over-engineering for this simplified use case.
+// Note: This structure is perhaps over-engineered for this simplified use case.
 // A static function would be enough, but added for future configuration.
 
 /// Compute the desired masked region size for scanning a passport.

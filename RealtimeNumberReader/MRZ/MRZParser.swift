@@ -12,6 +12,7 @@ import Foundation
 typealias MRZ = String
 
 /// Determine if a given string is a valid MRZ according to the _task criteria requirements_.
+/// The structure should be responsible for no more than: given this string, is it a valid MRZ.
 ///
 /// # Notes
 /// Given the time in a production app, my more stringent approach
@@ -31,6 +32,7 @@ typealias MRZ = String
 ///
 /// The logic for the parsing would also be stricter; e.g. potentially using regex(s) to ensure
 /// the MRZ is composed of valid characters.
+///
 /// It goes without saying, this is a huge candidate for a lot of ruthless unit tests!
 struct MRZParser {
 

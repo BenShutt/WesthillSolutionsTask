@@ -12,16 +12,16 @@ import Vision
 /// Group the results of recognised text into lines of the same count that may be a valid MRZ
 struct MRZCandidate {
 
-    /// Map the results into lines of text.
-    /// Group these lines when they match the line count of the line above and have
+    /// Map the results into groups (of lines of text).
+    /// The lines are grouped when they match the line count of the line above and have
     /// a character count of a valid MRZ.
+    /// A group could be a single line if it has a valid character count and the line below (if exists) does not.
     /// - Parameter results: Camera observed text results
     /// - Returns: Groups of lines which may be a valid MRZ
     static func groupLines(results: [VNRecognizedTextObservation]) -> [[String]] {
         let maximumCandidates = MRZParser.lineCounts.upperBound
         let lines = results.flatMap { visionResult in
-            visionResult.topCandidates(maximumCandidates)
-                .map { $0.string }
+            visionResult.topCandidates(maximumCandidates).map(\.string)
         }
 
         var groups: [[String]] = []

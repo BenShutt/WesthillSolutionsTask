@@ -20,6 +20,10 @@ class VisionViewController: ViewController {
 		request = VNRecognizeTextRequest(completionHandler: recognizeTextHandler)
 
 		super.viewDidLoad()
+
+		numberView.numberOfLines = 0
+		numberView.lineBreakMode = .byWordWrapping
+		numberView.font = UIFont.systemFont(ofSize: 10)
 	}
 	
 	// MARK: - Text recognition

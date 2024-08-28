@@ -100,8 +100,8 @@
 			children = (
 				B856D1522C7F709E00FC57DC /* MRZParser.swift */,
 				B856D1542C7F7CED00FC57DC /* MRZFeedback.swift */,
-				B856D1572C7F7F3A00FC57DC /* PassportRegion.swift */,
 				B856D1592C7F936700FC57DC /* MRZCandidate.swift */,
+				B856D1572C7F7F3A00FC57DC /* PassportRegion.swift */,
 			);
 			path = MRZ;
 			sourceTree = "<group>";
