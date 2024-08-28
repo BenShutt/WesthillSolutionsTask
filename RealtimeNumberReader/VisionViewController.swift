@@ -21,8 +21,12 @@ class VisionViewController: ViewController {
 
 		super.viewDidLoad()
 
+		// In a real app we wouldn't want word wrapping, each line
+		// has to accurately represent the MRZ. Perhaps a new single lined
+		// Text for each line
 		numberView.numberOfLines = 0
 		numberView.lineBreakMode = .byWordWrapping
+		numberView.textColor = MRZFeedback.success("").textColor
 		numberView.font = UIFont.systemFont(ofSize: 10)
 	}
 	

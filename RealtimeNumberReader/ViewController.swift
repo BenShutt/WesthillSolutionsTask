@@ -131,8 +131,9 @@ class ViewController: UIViewController {
 		
 		// Move the number view down to under cutout.
 		var numFrame = cutout
-		numFrame.origin.y += numFrame.size.height
+		numFrame.origin.y += numFrame.size.height + 20 // +20 spacing
 		numberView.frame = numFrame
+		numberView.heightToFit()
 	}
 	
 	func setupOrientationAndTransform() {
@@ -226,6 +227,7 @@ class ViewController: UIViewController {
 			self.captureSession.stopRunning()
             DispatchQueue.main.async {
                 self.numberView.text = string
+                self.numberView.heightToFit()
                 self.numberView.isHidden = false
             }
 		}

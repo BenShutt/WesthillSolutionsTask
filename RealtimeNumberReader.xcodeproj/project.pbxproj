@@ -18,6 +18,8 @@
 		B856D1552C7F7CED00FC57DC /* MRZFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856D1542C7F7CED00FC57DC /* MRZFeedback.swift */; };
 		B856D1582C7F7F3A00FC57DC /* PassportRegion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856D1572C7F7F3A00FC57DC /* PassportRegion.swift */; };
 		B856D15A2C7F936700FC57DC /* MRZCandidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856D1592C7F936700FC57DC /* MRZCandidate.swift */; };
+		B856D15C2C7FCFF700FC57DC /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856D15B2C7FCFF700FC57DC /* UILabel+Extensions.swift */; };
+		B856D15F2C7FD18600FC57DC /* UIColor+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B856D15E2C7FD18600FC57DC /* UIColor+Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		B856D1542C7F7CED00FC57DC /* MRZFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRZFeedback.swift; sourceTree = "<group>"; };
 		B856D1572C7F7F3A00FC57DC /* PassportRegion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportRegion.swift; sourceTree = "<group>"; };
 		B856D1592C7F936700FC57DC /* MRZCandidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRZCandidate.swift; sourceTree = "<group>"; };
+		B856D15B2C7FCFF700FC57DC /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		B856D15E2C7FD18600FC57DC /* UIColor+Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Colors.swift"; sourceTree = "<group>"; };
 		D4B262FCDCAFA149C877DBF8 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		E0C0E240E0E1569000000001 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,12 +102,22 @@
 		B856D1562C7F7DB200FC57DC /* MRZ */ = {
 			isa = PBXGroup;
 			children = (
+				B856D15D2C7FD17B00FC57DC /* Extensions */,
 				B856D1522C7F709E00FC57DC /* MRZParser.swift */,
 				B856D1542C7F7CED00FC57DC /* MRZFeedback.swift */,
 				B856D1592C7F936700FC57DC /* MRZCandidate.swift */,
 				B856D1572C7F7F3A00FC57DC /* PassportRegion.swift */,
 			);
 			path = MRZ;
+			sourceTree = "<group>";
+		};
+		B856D15D2C7FD17B00FC57DC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B856D15B2C7FCFF700FC57DC /* UILabel+Extensions.swift */,
+				B856D15E2C7FD18600FC57DC /* UIColor+Colors.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		FF610FDC61304D7540023623 /* Configuration */ = {
@@ -188,9 +202,11 @@
 				B856D1552C7F7CED00FC57DC /* MRZFeedback.swift in Sources */,
 				46D1B26F226A6A9600C6D4A7 /* ViewController.swift in Sources */,
 				46D1B26D226A6A9600C6D4A7 /* AppDelegate.swift in Sources */,
+				B856D15C2C7FCFF700FC57DC /* UILabel+Extensions.swift in Sources */,
 				460A3F502280B7A900FDBE21 /* VisionViewController.swift in Sources */,
 				B856D1532C7F709E00FC57DC /* MRZParser.swift in Sources */,
 				B856D15A2C7F936700FC57DC /* MRZCandidate.swift in Sources */,
+				B856D15F2C7FD18600FC57DC /* UIColor+Colors.swift in Sources */,
 				46D1B27F226A6AAB00C6D4A7 /* PreviewView.swift in Sources */,
 				B856D1582C7F7F3A00FC57DC /* PassportRegion.swift in Sources */,
 			);

@@ -11,7 +11,7 @@ import UIKit
 /// Feedback UI given to the user while they scan their MRZ.
 ///
 /// # Note
-/// Not currently used as, at this stage, it is undoubtedly over-engineering.
+/// At this stage, this entity is undoubtedly over-engineered.
 /// In the future, it will become the observable model that publishes the state as feedback to the user.
 /// Also, at this stage, the structure could be replaced by a `Result`.
 enum MRZFeedback {
@@ -33,7 +33,7 @@ enum MRZFeedback {
     /// Overlay text color
     var textColor: UIColor {
         switch self {
-        case .success: .green
+        case .success: .darkGreen
         case .failure: .red
         }
     }

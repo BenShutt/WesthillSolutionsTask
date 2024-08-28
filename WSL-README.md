@@ -24,6 +24,7 @@ But the requirements are quite clear about editing the WWDC19 sample code, so I 
 ## Challenges
 
 - Undoubtedly, the primary challenge is that the (camera read) text results are returned as single lines whereas a valid MRZ has multiple. My solution was to group the lines based on character count and send them through the parser (in an efficient-ish way such as assuming correct order). I _strongly_ suspect there is a better way and would, given more time, investigate that
+- When reading a passport, it might accept the first, say, 36 characters instead of 44 because that would be valid. This could be sorted using the document type prefix but that was not part of the criteria for this task
 - The [recognitionLevel](https://developer.apple.com/documentation/vision/vnrecognizetextrequest/recognitionlevel) needed to be `.accurate`, perhaps there is a way to make it work faster
 
 ### Less Important
