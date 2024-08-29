@@ -11,26 +11,30 @@ I have committed:
 
 You can do a diff on these branches to preview the changes that I have made.
 
+### Installing On Device
+
+If you would like to install this app on your device, make sure to update the `DEVELOPMENT_TEAM` in the Xcode "Signing & Capabilities".
+
 ## Initial Thoughts
 
 The first thing that comes to mind is that the [WWDC22 video](https://developer.apple.com/videos/play/wwdc2022/10025/) is about [DataScannerViewController](https://developer.apple.com/documentation/visionkit/datascannerviewcontroller) (which removes a lot of the boilerplate) but the sample code is from WWDC19, so fair bit older.
 
 I am going to _assume_ that you do **not** want me to use `DataScannerViewController`, perhaps because we might need backwards compatibility beyond iOS 16.
 
-Similarly, having built a QR code scanning delivery app before, where I leveraged [AVCaptureSession](https://developer.apple.com/documentation/avfoundation/avcapturesession) extensively, I was tempted to send you a fresh project without any clutter that just reads and parses MRZ codes.
+Similarly, having built a QR code scanning app before, where I leveraged [AVCaptureSession](https://developer.apple.com/documentation/avfoundation/avcapturesession) extensively, I was tempted to send you a fresh project without any clutter that just reads and parses MRZ codes.
 This would have been a bit faster and the UI a lot nicer.
 But the requirements are quite clear about editing the WWDC19 sample code, so I have not done this.
 
 ## Challenges
 
-- Undoubtedly, the primary challenge is that the (camera read) text results are returned as single lines whereas a valid MRZ has multiple. My solution was to group the lines based on character count and send them through the parser (in an efficient-ish way such as assuming correct order). I _strongly_ suspect there is a better way and would, given more time, investigate that
+- Undoubtedly, the primary challenge is that the (camera read) text results are returned as single lines whereas a valid MRZ has multiple. My solution was to group the lines based on character count and send them through the parser (in an efficient-ish way such as assuming correct order). It works well, but I _strongly_ suspect there is a better way and would, given more time, investigate that
 - When reading a passport, it might accept the first, say, 36 characters instead of 44 because that would be valid. This could be sorted using the document type prefix but that was not part of the criteria for this task
 - The [recognitionLevel](https://developer.apple.com/documentation/vision/vnrecognizetextrequest/recognitionlevel) needed to be `.accurate`, perhaps there is a way to make it work faster
 
 ### Less Important
 
 - Understanding `bufferAspectRatio` and how we need to cater for it
-- Transformations based on device orientation. This sample project (because of its use case) is a little over-engineered for our MRZ use case. I think when using the camera to scan a passport, it is not unreasonable to ask the user to simply rotate their device so it is landscape which results in a better mask
+- Transformations based on device orientation. In this regard, I would argue that this sample project is a little over-engineered for our MRZ use case. When using the camera to scan a passport, it is not unreasonable to ask the user to simply rotate their device so it is landscape which results in a better mask
 - Ugly UI that ought to be better, given more time I would definitely sort this
 
 ## Time Limit
@@ -46,36 +50,33 @@ This task was time-boxed to 4 hours maximum. In this time I:
 - Tested my changes
 - Wrote this `README` and other codebase documentation
 
-I am finishing now by answering your final questions on the task criteria.
-
-Due to the time limit, I can not complete any more features in the time.
-If other candidates have done more in the 4h I would be interested to know if they actually stuck to the 4h.
-I took a little longer due to the amount I have written here.
+Due to the time limit, I have to stop here and am finishing now by answering your final questions on the task criteria.
+Actually, I probably went a little over time due to the extend of the documentation I have written.
 
 ## Answers To Your Questions
 
 > How could you give feedback to the user on whether the document is too far away or too close? (Hint, we didn't use text rectangles for this, but you could.)
 
-A little toast saying something like "please move closer" is quite clear, but it doesn't need to stop there. 
-I personally quite like modifying the frame (aka the mask) to indicate how good of a job the user is doing at scanning their document.
+A little toast saying something like "please move closer" is quite clear, but it doesn't have to stop there. 
+I personally quite like the UX of modifying the frame (aka the mask) to indicate how good of a job the user is doing at scanning their document.
 For example, green for excellent position, amber means the app is trying but struggling, red for bad framing.
 
 > How could you give feedback to the user on whether the image has too much reflection, is too bright or too dark?
 
-In a perfect world the app would be able to adjust accordingly, but that has a lot of hardware dependency.
-In the delivery QR code app that I mentioned I added a button to enable the device torch for the user to use while scanning.
+In a perfect world, the app would be able to adjust accordingly, but that has a lot of hardware dependency.
+In the QR code scanning app that I mentioned I added a button to enable the device torch for the user to use while scanning (because users may be using it at night).
 Lastly, I would fallback on helpful and clear wording.
 
 > How could you test the above scenarios (document too far, too close, too bright) to check for changes within the app?
 
-You can do a lot with simulators. For example, low-light simulation for accessibility testing (perhaps with [Browserstack](https://www.google.com/search?client=safari&rls=en&q=Browserstack&ie=UTF-8&oe=UTF-8) or equivalent).
+You can do a lot with simulators. For example, testing with with [Browserstack](https://www.browserstack.com/docs/app-automate/appium/advanced-features/camera-image-injection) or equivalent.
 Importantly, there has to be some in-person testing running through the different cases. 
 Ideally, in an objective way so we can report on what is supported.
 
 > How could you test the above scenarios (document too far, too close, too bright) to compare our implementation, and detection speed, to the Innovatrics DOT app?
 
 The in-person tests can obviously be done side-by-side.
-I am not completely sure on whether we could get an `.ipa` of the Innovatrics DOT app for automated testing.
+I am not sure without further investigation on whether we could get an `.ipa` of the Innovatrics DOT app for automated testing.
 
 > How can we test the apps response bad / partial / malformed MRZ text lines?
 
@@ -90,15 +91,17 @@ As mentioned above, there is a setting to use a [.fast](https://developer.apple.
 Importantly, when developing parsing algorithms we need to be mindful of _complexity_ (the notorious order notation).
 Unit tests can be used to measure timing but, in addition to that, there needs to be an understanding of how demanding the algorithm is.
 
-Often it is preferable to opt for readability over performance when the performance difference is negligible. 
+Often, it is preferable to opt for readability over performance when the performance difference is negligible. 
 For a parsing algorithm like this that is regularly called, we might err on the side of efficiency.
 Even if that means a small sacrifice to simplicity and readability.
 
 > What are the overall steps of the process - (this more identifies what parts of the business logic might be identical, or with KMP shared) between Android / iOS?
 
-The parsing algorithm will be the same.
-The UI and UX would be very similar too such as the logic that determines when feedback shows.
+The parsing algorithm would be the same.
+The UI and UX would be very similar too, including the underlying logic that determines when feedback shows.
 The only difference really is integrating with the hardware (and thus the SDK APIs) and platform design standards.
+It is not uncommon to find a feature only available on one platform, p3 color spaces come to mind in the past for me (though looks like Android have now introduced it).
+For a project like this where we are interfacing significantly with the hardware the codebases may look quite different.
 
 > MRZ is a standard, but has variations - eg. Russian Identity cards, and character transliteration. How might we handle a situation where a customer comes to us and says "passports aren't scanning and our passengers are getting frustrated"?
 
@@ -131,13 +134,14 @@ To be honest though, I would want more time to think about the answer to this qu
 
 Firstly, I would push back a little and ask "do we _really_ need to store it?".
 If yes, then the [Keychain](https://developer.apple.com/documentation/security/keychain-services) is a secure place to store sensitive data like passwords.
-It is worth noting that Jailbroken devices can access it and, on the client-side, the app can be decompiled revealing source-code.
+It is worth noting that Jailbroken devices can access it, though it should only be the data they have access to themselves.
+Tangentially, regarding (say) encryption keys stored on the client-side, the app can be decompiled revealing source-code exposing the keys.
 
 Perhaps this app has accounts, if so:
 
 - Authenticate their app session with biometrics
 - On successful login, generating a short-lived, revokable access token
-- Fetching this data from a server with this token
+- Sensitive data could be fetched from the server with this token, stored only in memory
 - Potentially adding additional layers of encryption to protect against man-in-the-middle
 
 ## Task Criteria Amends?
@@ -152,4 +156,4 @@ https://www.consilium.europa.eu/prado/EN/prado-start-page.htm
 
 ### MRZ Criteria
 
-I may just be a miss-reading this but where it says "3 remaining lines" implies that there are 4 lines.
+I may just be miss-reading this but where it says "3 remaining lines" implies that there are 4 lines.
