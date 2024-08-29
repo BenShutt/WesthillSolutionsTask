@@ -1,6 +1,6 @@
 # WSL Technical Task
 
-This is the supporting documentation that I (Ben Shutt) have written alongside my solution to the Westhill Solutions Technical Task.
+This is the supporting documentation that I have written alongside my solution to the Westhill Solutions Technical Task.
 
 ## My Changes
 
